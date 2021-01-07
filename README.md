@@ -94,6 +94,8 @@ fileCatchPath = C:/upload
 4. 修改`Tools.vue`组件的svg图标(`div.btnContain > div:nth-child(3)>svg`)
 
    ![image-20210103153742154](https://image-storage-1258004334.cos.ap-chengdu.myqcloud.com/image-20210103153742154.png)
+   
+5. 修改vue.config.js里的`publicPath` 对应servlet的静态资源路径
 
 #### 网页展示
 
