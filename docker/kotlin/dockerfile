@@ -1,0 +1,14 @@
+FROM openjdk:8-jdk-alpine3.9
+
+ARG VERSION=1.4.21
+RUN wget https://github.com/JetBrains/kotlin/releases/download/v$VERSION/kotlin-compiler-$VERSION.zip -O /opt/kotlinc.zip \
+  && unzip /opt/kotlinc.zip -d /opt \
+  && rm -f /opt/kotlinc.zip
+RUN apk update && apk add bash
+ENV KOTLIN_HOME /opt/kotlinc
+ENV PATH $KOTLIN_HOME/bin:$PATH
+WORKDIR /opt/
+COPY ./main.kt ./main.kt
+COPY ./entrypoint.sh /opt/
+RUN chmod -R 777 ./entrypoint.sh
+ENTRYPOINT ["./entrypoint.sh","main.kt"]
